@@ -11,7 +11,7 @@
         rel="stylesheet">
     <meta name="description" content="">
     <link rel="stylesheet" href="./assets/style.css">
-    <script src="script.js" defer></script>
+    <script src="login.js" defer></script>
 </head>
 
 <body class="logbody">
@@ -28,17 +28,19 @@
     </header>
     <div class="login">
         <h2>Log in</h2>
-        <form action="#" method="post">
+        <form action="#" method="post" id="login-form">
             <div class="area">
                 <label for="email">E-mail</label>
-                <input type="email" name="email" id="email">
+                <input type="email" name="email" id="email" required>
             </div>
             <div class="area">
                 <label for="password">Mot de passe</label>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password" id="password" required>
             </div>
+            <button type="submit">Se connecter</button>
         </form>
-        <button>Se connecter</button>
+        <p id="error-message">E-mail ou mot de passe incorrect.</p>
+
         <a href="#">Mot de passe oublié</a>
     </div>
 </body>

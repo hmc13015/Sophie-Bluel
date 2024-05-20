@@ -229,6 +229,7 @@ footer nav ul {
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
+	align-items: center;
 	
 
 }
@@ -260,9 +261,15 @@ footer nav ul {
 	font-family: 'Syne';
 	font-size: 14px;
 	border: solid 1px #1D6154;
-
+	cursor: pointer;
+	
 }
 
 .logbody {
 	background-color: #fffefb;
+}
+
+#error-message {
+	color: red;
+	display: none;
 }
