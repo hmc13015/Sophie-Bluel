@@ -190,27 +190,32 @@ footer nav ul {
 
 #filtres {
 	display: flex;
-	font-size: 16px;
-	color: #1D6154;
-	gap:15px;
 	justify-content: center;
-	font-family: 'syne';
-	margin: 3em;
-
+	margin: 50px;
+	gap: 15px;
+	
 }
-
-#filtres div {
-	border: solid #1D6154 1px;
+#filtres button {
 	border-radius: 60px;
-	padding: 10px 20px;
-
+	border: solid 1px #1D6154;
+	height: 37px;
+	font-size: 16px;
+	font-family: 'Syne';
+	color: #1D6154;
+	background-color: #fffefb;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 100px;
+	padding: 15px;
+	
 }
 
-#filtres div:hover {
-	color: white;
+#filtres button:hover {
 	background-color: #1D6154;
+	color: white;
+	cursor: pointer;
 }
-
 
 /* Log in page  */
 .login {
