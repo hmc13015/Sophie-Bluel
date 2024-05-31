@@ -16,13 +16,16 @@
 </head>
 
 <body>
+	<div class="bande-noir">
+		<button class="open-modal-btn"><i class="fa-regular fa-pen-to-square"></i>Mode édition</button>
+	</div>
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
 			<ul>
 				<li>projets</li>
 				<li>contact</li>
-				<li>login</li>
+				<li><a href="login.html">logout</a></li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -46,13 +49,21 @@
 		<section id="portfolio">
 			<div class="titre-btn">
 				<h2>Mes Projets</h2>
-				<button id="open-modal-btn"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+				<button class="open-modal-btn"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
 			</div>
 			<div id="modal" class="modal">
-				<div class="modal-content">
+				<div class="modal-content" id="modal-content">
 					<span class="close-btn"><i class="fa-solid fa-xmark"></i></span>
 					<h2>Galerie photo</h2>
+					<div class="modal-gallery" id="modal-gallery"></div>
+					<div class="btn-img">
+						<button class="ajt-img" id="ajt-img">Ajouter une photo</button>
+					</div>
 				</div>
+
+
+			</div>
+			</div>
 			</div>
 
 			<div id="filtres">

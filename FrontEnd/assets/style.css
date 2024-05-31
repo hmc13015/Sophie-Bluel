@@ -317,7 +317,7 @@ footer nav ul {
 	background-color: #fefefe;
 	margin: 15% auto; 
 	padding: 20px;
-	width: 60%; 
+	width: 630px; 
 	border-radius: 10px;
 
   }
@@ -326,7 +326,9 @@ footer nav ul {
 	font-weight: 400;
 	font-size: 26px;
 	color: black;
-	margin: 30px;
+	margin: 50px;
+	
+	
   }
   
   .close-btn {
@@ -334,6 +336,7 @@ footer nav ul {
 	float: right;
 	font-size: 22px;
 	font-weight: bold;
+	margin: 15px;
   }
   
   .close-btn:hover,
@@ -343,3 +346,75 @@ footer nav ul {
 	cursor: pointer;
   }
   
+  .bande-noir button {
+	color: white;
+	font-weight: 400;
+	font-size: 16px;
+	font-family: 'Work Sans';
+	border: none;
+	background-color: black;
+	gap: 15px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	
+
+  }
+
+  .bande-noir {
+	display: flex;
+	justify-content: center;
+	background-color: black;
+	height: 59px;
+	
+	
+  }
+  header a {
+	text-decoration: none;
+	color: black;
+  }
+
+  header li:hover {
+	color: black;
+	cursor: pointer;
+	font-weight: 600;
+  }
+
+.modal-content img {
+	height: 120px;
+	margin-bottom: 20px;
+}
+
+.modal-gallery {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 60px 70px 50px 70px;
+	padding-bottom: 50px;
+	border-bottom: 1px solid #B3B3B3;
+}
+
+.ajt-img {
+	display:flex;
+	justify-content: center;
+	border: solid 1px #1D6154;
+	border-radius: 60px;
+	align-items: center;
+	font-family: 'SYNE';
+	color: white;
+	background-color: #1D6154;
+	font-size: 14px;
+	font-weight: 700;
+	cursor: pointer;
+	padding: 10px 50px;
+	
+}
+
+.btn-img {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 30px;
+	
+	
+}

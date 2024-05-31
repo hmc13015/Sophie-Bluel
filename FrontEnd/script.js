@@ -1,3 +1,4 @@
+// Récupération des données des travaux
 async function récupérerDonnées() {
   try {
     const reponse = await fetch('http://localhost:5678/api/works');
@@ -12,6 +13,7 @@ async function récupérerDonnées() {
   }
 }
 
+// Récupération des catégories
 async function récupérerCatégories() {
   try {
     const response = await fetch('http://localhost:5678/api/categories');
@@ -26,8 +28,9 @@ async function récupérerCatégories() {
   }
 }
 
-function afficherTravaux(data) {
-  const gallery = document.getElementById("gallery");
+// Affichage des travaux
+function afficherTravaux(data, containerId) {
+  const gallery = document.getElementById(containerId);
   gallery.innerHTML = ''; 
 
   for (const article of data) {
@@ -35,25 +38,29 @@ function afficherTravaux(data) {
     const imageElement = document.createElement("img");
     imageElement.src = article.imageUrl;
     div.appendChild(imageElement);
-    const titreElement = document.createElement("p");
-    titreElement.innerText = article.title;
-    div.appendChild(titreElement);
+
+    if (containerId !== 'modal-gallery') {
+      const titreElement = document.createElement("p");
+      titreElement.innerText = article.title;
+      div.appendChild(titreElement);
+    }
+
     gallery.appendChild(div);
   }
 }
 
+// Affichage des catégories
 async function afficherCatégories() {
   try {
     const categories = await récupérerCatégories();
-    console.log(categories);
     const filtres = document.getElementById("filtres");
 
-    
     const boutonTous = document.createElement("button");
     boutonTous.innerText = "Tous";
     boutonTous.addEventListener("click", async () => {
       const travaux = await récupérerDonnées();
-      afficherTravaux(travaux);
+      afficherTravaux(travaux, 'gallery');
+      afficherTravaux(travaux, 'modal-gallery');
     });
     filtres.appendChild(boutonTous);
 
@@ -63,7 +70,8 @@ async function afficherCatégories() {
       bouton.addEventListener("click", async () => {
         const travaux = await récupérerDonnées();
         const travauxFiltrés = travaux.filter(travail => travail.categoryId === categorie.id);
-        afficherTravaux(travauxFiltrés);
+        afficherTravaux(travauxFiltrés, 'gallery');
+        afficherTravaux(travauxFiltrés, 'modal-gallery');
       });
       filtres.appendChild(bouton);
     }
@@ -72,37 +80,59 @@ async function afficherCatégories() {
   }
 }
 
+// Initialisation
 async function init() {
   try {
     const travaux = await récupérerDonnées();
-    afficherTravaux(travaux);
+    afficherTravaux(travaux, 'gallery');
+    afficherTravaux(travaux, 'modal-gallery');
     await afficherCatégories();
+    await afficherCatégoriesForm();
   } catch (erreur) {
     console.error(erreur);
   }
 }
 
-// Appel de la fonction d'initialisation pour afficher les données et les catégories
-init();
+// Affichage des catégories dans le formulaire
+async function afficherCatégoriesForm() {
+  try {
+    const categories = await récupérerCatégories();
+    const categorySelect = document.getElementById('categoryId');
 
+    for (const categorie of categories) {
+      const option = document.createElement("option");
+      option.value = categorie.id;
+      option.innerText = categorie.name;
+      categorySelect.appendChild(option);
+    }
+  } catch (erreur) {
+    console.error(erreur);
+  }
+}
+
+init();
 
 // Partie modale
 const modal = document.getElementById('modal');
-
-const openModalBtn = document.getElementById('open-modal-btn');
-
+const openModalButtons = document.querySelectorAll('.open-modal-btn'); 
 const closeModalBtn = document.getElementsByClassName('close-btn')[0];
 
-openModalBtn.onclick = function() {
+function ouvrirModale() {
   modal.style.display = 'block';
 }
 
-closeModalBtn.onclick = function() {
+function fermerModale() {
   modal.style.display = 'none';
 }
 
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = 'none';
+openModalButtons.forEach(button => {
+  button.addEventListener('click', ouvrirModale);
+});
+
+closeModalBtn.addEventListener('click', fermerModale);
+
+window.addEventListener('click', function(event) {
+  if (event.target === modal) {
+    fermerModale();
   }
-}
+});
